@@ -13,6 +13,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/* 
+ * qmk config user.keyboard=kprepublic/bm40hsrgb/rev2
+ * qmk setup
+ * qmk compile -km <keymap>
+ * fn ctrl alt fn2 (reset) 
+ * flash
+ */
+
 #include QMK_KEYBOARD_H
 
 enum layers {
@@ -158,17 +167,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   '  |   ,  |   .  |   P  |   Y  |  Tab | Bksp |   F  |   G  |   C  |   R  |   L  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   A  |   O  |   E  |   U  |   I  | Ctrl | Alt  |   D  |   H  |   T  |   N  |  S   |
+ * |   A  |   O  |   E  |   U  |   I  | Shift| Enter|   D  |   H  |   T  |   N  |  S   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   ;  |   Q  |   J  |   K  |   X  | Shift| Enter|   B  |   M  |   W  |   V  |  Z   |
+ * |   ;  |   Q  |   J  |   K  |   X  | Ctrl | Alt  |   B  |   M  |   W  |   V  |  Z   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   /  |  =   |  -   | Win  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12_1x2uC(
         KC_QUOT, KC_COMM, KC_DOT, KC_P, KC_Y, KC_TAB, KC_BSPC, KC_F, KC_G, KC_C, KC_R, KC_L, 
-        KC_A, KC_O, KC_E, KC_U, KC_I, KC_LCTL, KC_LALT, KC_D, KC_H, KC_T, KC_N, KC_S, 
-        KC_SCLN, KC_Q, KC_J, KC_K, KC_X, KC_LSFT, KC_ENT, KC_B, KC_M, KC_W, KC_V, KC_Z, 
+        KC_A, KC_O, KC_E, KC_U, KC_I, KC_LSFT, KC_ENT, KC_D, KC_H, KC_T, KC_N, KC_S, 
+        KC_SCLN, KC_Q, KC_J, KC_K, KC_X, KC_LCTL, KC_LALT, KC_B, KC_M, KC_W, KC_V, KC_Z, 
         KC_SLSH, KC_EQL, KC_MINS, KC_LGUI, MO(1), KC_SPC, MO(2), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
 ),
 
@@ -176,17 +185,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   7  |  8   |  9   |   (  |   )  |  Cap |  Del |   &  |   |  |   ~  |  `   |   \  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   4  |  5   |   6  |   [  |  ]   |Layer4|      |   !  |   #  |   @  |   ^  |  $   |
+ * |   4  |  5   |   6  |   [  |  ]   |      | PrSc |   !  |   #  |   @  |   ^  |  $   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   1  |  2   |  3   |  {   |  }   |      | PrSc |RgbTog|RgbMd+| Hue+ | Val+ | Eff+ |
+ * |   1  |  2   |  3   |  {   |  }   |Layer4|      |RgbTog|RgbMd+| Hue+ | Val+ | Eff+ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   0  |   *  |  %   |  esc |      |             |      | Home | PgDn | PgUp |  End |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12_1x2uC(
         KC_7, KC_8, KC_9, KC_LPRN, KC_RPRN, KC_CAPS, KC_DEL, KC_AMPR, KC_PIPE, KC_TILD, KC_GRV,  KC_BSLS, 
-        KC_4, KC_5, KC_6, KC_LBRC, KC_RBRC, MO(4), KC_TRNS, KC_EXLM, KC_HASH, KC_AT, KC_CIRC, KC_DLR, 
-        KC_1, KC_2, KC_3, KC_LCBR, KC_RCBR, KC_TRNS, KC_PSCR, RGB_TOG, RGB_MOD, RGB_HUI, RGB_VAI, RGB_SPI, 
+        KC_4, KC_5, KC_6, KC_LBRC, KC_RBRC, KC_TRNS, KC_PSCR, KC_EXLM, KC_HASH, KC_AT, KC_CIRC, KC_DLR, 
+        KC_1, KC_2, KC_3, KC_LCBR, KC_RCBR, MO(4), KC_TRNS, RGB_TOG, RGB_MOD, RGB_HUI, RGB_VAI, RGB_SPI, 
         KC_0, KC_ASTR, KC_PERC, KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END
 ),
 
@@ -194,25 +203,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   f1 |  f2  |  f3  |  f4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  T_T |  :'( |  :(  |  :/  |  :|  |      |      |  :)  |  :D  |  :v  |  xD  |=)))))|
+ * |  T_T |  :'( |  :(  |  :/  |  :|  |      | Pause|  :)  |  :D  |  :v  |  xD  |=)))))|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  >.< |  =_= |  @@  | o_O  |( ._.)|      | Pause| :O   |  ;)  |  :p  |  B)  |  :3  |
+ * |  >.< |  =_= |  @@  | o_O  |( ._.)|      |      | :O   |  ;)  |  :p  |  B)  |  :3  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | undo |  cut | copy | paste|      |             |      | prev | volup| voldn| next |
+ * | undo |  cut | copy | paste|      |             |      | prev | voldn| volup| next |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_ortho_4x12_1x2uC(
         KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
-        TT, CRY, SAD, CONFS, NEUTRL, KC_TRNS, KC_TRNS, SSMILE, SMILED, SMILEV, XD, LOLOL, 
-        ANGRY, EXPLSS, SHAKED, STUPID, CURRS, KC_TRNS, KC_MPLY, WOW, BLINK, TOUNGE, SNGLS, MEOW, 
+        TT, CRY, SAD, CONFS, NEUTRL, KC_TRNS, KC_MPLY, SSMILE, SMILED, SMILEV, XD, LOLOL, 
+        ANGRY, EXPLSS, SHAKED, STUPID, CURRS, KC_TRNS, KC_TRNS, WOW, BLINK, TOUNGE, SNGLS, MEOW, 
         LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT
 ),
 
 //Dedicated layouts for reset button. Fn1 + Ctrl + Alt + Fn2
 [_RESET] = LAYOUT_ortho_4x12_1x2uC(
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(5), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(5), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 [_RESET1] = LAYOUT_ortho_4x12_1x2uC(
